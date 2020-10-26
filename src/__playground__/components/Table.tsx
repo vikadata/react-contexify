@@ -1,4 +1,5 @@
 import React, { MouseEvent } from 'react';
+import { contextMenu } from '../../utils/contextMenu';
 
 export default ({
   event,
@@ -19,9 +20,21 @@ export default ({
     );
   }
 
+  function onClick (e:React.MouseEvent) { 
+    contextMenu.show({
+      id: '1',
+      event: e,
+      props: {
+        name:'su'
+      }
+    })
+  }
+
   return (
     <div>
+      <span onContextMenu={onClick}>
       This is a table
+      </span>
       <table className="grid">
         <tbody>{table}</tbody>
       </table>

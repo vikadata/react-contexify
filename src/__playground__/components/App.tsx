@@ -76,6 +76,7 @@ class App extends Component {
   }
 
   handleMenuItem = (payload: MenuItemEventHandler) => {
+    
     const { clientX, clientY } = payload.event;
     this.setState({
       payload: {

@@ -3,6 +3,6 @@ import React from 'react';
 import App from './components/App';
 
 import './index.css';
-import '../../scss/main.scss';
+import '../../less/main.less';
 
 render(<App />, document.getElementById('root'));

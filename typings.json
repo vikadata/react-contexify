@@ -1,0 +1,5 @@
+{
+  "globalDevDependencies": {
+    "less": "registry:dt/less#0.0.0+20161212190028"
+  }
+}

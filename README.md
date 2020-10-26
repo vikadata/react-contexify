@@ -6,7 +6,7 @@
 
 ## Documentation
 
-Go [here](https://fkhadra.github.io/react-contexify). 
+Go [here](https://github.com/vikadata/react-contexify). 
 
 ## Installation
 

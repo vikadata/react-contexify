@@ -26,19 +26,35 @@ module.exports = {
         }
       },
       {
-        test: /\.s?css$/,
+        test: /\.less$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                strictMath: true,
+              },
+            },
+          },
+        ],
+      }, {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+        ],
       }
+
     ]
   },
   plugins: [
@@ -52,6 +68,5 @@ module.exports = {
     port: process.env.PORT || 8888,
     historyApiFallback: true,
     open: true,
-    host: '0.0.0.0'
   }
 };

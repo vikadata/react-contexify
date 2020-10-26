@@ -1,6 +1,6 @@
 {
-  "name": "react-contexify",
-  "version": "4.1.1",
+  "name": "@vikadata/react-contexify",
+  "version": "4.1.3",
   "main": "lib/index.js",
   "typings": "./lib/index.d.ts",
   "description": "Add contextmenu to your react component with ease",
@@ -13,7 +13,7 @@
     "react-contexify"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.dev.js",
+    "start": "webpack-dev-server --config ./webpack.config.dev.js & tsc -w",
     "test": "cross-env NODE_ENV=test jest --verbose",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
     "prettier": "prettier --parser typescript --single-quote --write \"src/**/*.{ts,tsx}\"",
@@ -23,18 +23,17 @@
     "build:umd": "npm run clean:umd && cross-env NODE_ENV=production webpack",
     "clean:es": "rimraf lib/*",
     "clean:umd": "rimraf dist/*",
-    "sass": "node-sass scss/main.scss dist/ReactContexify.css",
     "postsass": "postcss dist/ReactContexify.css --use autoprefixer -m -o dist/ReactContexify.css",
     "style": "npm run sass && cssnano dist/ReactContexify.css dist/ReactContexify.min.css --no-zindex --no-reduceIdents"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fkhadra/react-contexify.git"
+    "url": "git+https://github.com/vikadata/react-contexify.git"
   },
-  "author": "Fadi Khadra <fdkhadra@gmail.com> (https://github.com/fkhadra)",
+  "author": "vikadata (https://github.com/vikadata/react-contexify)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fkhadra/react-contexify/issues"
+    "url": "https://github.com/vikadata/react-contexify/issues"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
@@ -56,7 +55,8 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0",
-    "node-sass": "^4.9.3",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.2",
     "postcss": "^7.0.2",
     "postcss-cli": "^6.0.0",
     "prettier": "^1.14.2",
@@ -66,7 +66,6 @@
     "react-test-renderer": "^16.4.2",
     "regenerator-runtime": "^0.12.1",
     "rimraf": "^2.6.2",
-    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "ts-jest": "^23.10.3",
     "ts-loader": "^5.2.1",

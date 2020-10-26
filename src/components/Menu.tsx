@@ -87,17 +87,17 @@ class Menu extends Component<MenuProps, MenuState> {
   menuRef!: HTMLDivElement;
   unsub: (() => boolean)[] = [];
 
-  componentDidMount() {
+  componentDidMount () {
     this.unsub.push(eventManager.on(DISPLAY_MENU(this.props.id), this.show));
     this.unsub.push(eventManager.on(HIDE_ALL, this.hide));
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.unsub.forEach(cb => cb());
     this.unBindWindowEvent();
   }
 
-  componentDidUpdate(_: Readonly<MenuProps>, prevState: Readonly<MenuState>) {
+  componentDidUpdate (_: Readonly<MenuProps>, prevState: Readonly<MenuState>) {
     if (this.state.visible !== prevState.visible) {
       if (this.state.visible && this.props.onShown) {
         this.props.onShown();
@@ -157,7 +157,7 @@ class Menu extends Component<MenuProps, MenuState> {
     this.menuRef = ref;
   };
 
-  setMenuPosition() {
+  setMenuPosition () {
     const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
     const { offsetWidth: menuWidth, offsetHeight: menuHeight } = this.menuRef;
     let { x, y } = this.state;
@@ -179,7 +179,7 @@ class Menu extends Component<MenuProps, MenuState> {
     );
   }
 
-  getMousePosition(e: TriggerEvent) {
+  getMousePosition (e: TriggerEvent) {
     const pos = {
       x: e.clientX,
       y: e.clientY
@@ -223,8 +223,8 @@ class Menu extends Component<MenuProps, MenuState> {
     );
   };
 
-  render() {
-    const { theme, animation, style, className, children } = this.props;
+  render () {
+    const { theme, animation, style, className, children, id } = this.props;
     const { visible, nativeEvent, propsFromTrigger, x, y } = this.state;
 
     const cssClasses = cx(styles.menu, className, {
@@ -247,6 +247,7 @@ class Menu extends Component<MenuProps, MenuState> {
             ref={this.setRef}
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
+            id={id + ''}
           >
             <div>
               {cloneItem(children, {
