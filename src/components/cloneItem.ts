@@ -11,7 +11,7 @@ export function cloneItem (
     Children.toArray(children).filter(child => Boolean(child)),
     child => {
       if (!isValidElement(child)) { return child }
-      if (!(child.type === Item)) {
+      if (!(child.type === Item) && child.props.children) {
         return cloneItem(child.props.children, props)
       }
       return cloneElement(child as ReactElement<any>, props)
